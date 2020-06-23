@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'ArticleController@index');
-Route::get('/article', 'ArticleController@show');
+Route::get('/article/{article}', 'ArticleController@show');
 Route::get('/new', 'ArticleController@create');
 Route::get('/edit', 'ArticleController@edit');

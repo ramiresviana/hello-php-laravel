@@ -16,41 +16,21 @@
 
 <p class="pb-4">There are 100 posts</p>
 
-<a href="#">
+@foreach ($articles as $article)
+
+<a href="{{ url('article', $article->id) }}">
 <article class="mb-5 text-dark">
     <div class="media d-block d-md-flex">
-    <img src="img.jpg" class="mr-3"/>
+    <img src="{{ url($article->image) }}" class="mr-3"/>
     <div class="media-body">
-        <h4 class="my-3">Vivamus euismod a tellus eget interdum. Aenean ac.</h4>
-        <p>Aliquam vulputate mi in vulputate aliquam. Mauris ultrices vel felis eget tempus. Morbi a est at lacus malesuada ultrices ac quis turpis. Curabitur ante metus, malesuada eget neque eu, ornare suscipit ligula. Aliquam suscipit cursus eros, ut tincidunt nulla laoreet a. Donec aliquam urna vel pellentesque sodales.</p>
+        <h4 class="my-3">{{ $article->title }}</h4>
+        <p>{{ $article->content }}</p>
     </div>
     </div>
 </article>
 </a>
 
-<a href="#">
-<article class="mb-5 text-dark">
-    <div class="media d-block d-md-flex">
-    <img src="img.jpg" class="mr-3"/>
-    <div class="media-body">
-        <h4 class="my-3">Vivamus euismod a tellus eget interdum. Aenean ac.</h4>
-        <p>Aliquam vulputate mi in vulputate aliquam. Mauris ultrices vel felis eget tempus. Morbi a est at lacus malesuada ultrices ac quis turpis. Curabitur ante metus, malesuada eget neque eu, ornare suscipit ligula. Aliquam suscipit cursus eros, ut tincidunt nulla laoreet a. Donec aliquam urna vel pellentesque sodales.</p>
-    </div>
-    </div>
-</article>
-</a>
-
-<a href="#">
-<article class="mb-5 text-dark">
-    <div class="media d-block d-md-flex">
-    <img src="img.jpg" class="mr-3"/>
-    <div class="media-body">
-        <h4 class="my-3">Vivamus euismod a tellus eget interdum. Aenean ac.</h4>
-        <p>Aliquam vulputate mi in vulputate aliquam. Mauris ultrices vel felis eget tempus. Morbi a est at lacus malesuada ultrices ac quis turpis. Curabitur ante metus, malesuada eget neque eu, ornare suscipit ligula. Aliquam suscipit cursus eros, ut tincidunt nulla laoreet a. Donec aliquam urna vel pellentesque sodales.</p>
-    </div>
-    </div>
-</article>
-</a>
+@endforeach
 
 <button type="button" class="btn btn-primary mt-3">Next page</button>
 
