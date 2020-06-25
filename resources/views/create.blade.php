@@ -12,7 +12,7 @@
 
   <div class="form-group">
     <label>Title</label>
-  <input class="form-control" name="title" value="{{ old('title') }}">
+    <input class="form-control" name="title" value="{{ old('title') }}">
   </div>
   <div class="form-group">
     <label>Content</label>
@@ -26,11 +26,11 @@
   <br>
 @if ($errors->any())
   <div class="alert alert-danger">
-      <ul>
+    <ul>
 @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
+      <li>{{ $error }}</li>
 @endforeach
-      </ul>
+    </ul>
   </div>
 @endif
 

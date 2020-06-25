@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Http\Requests\ArticleFormRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -34,8 +35,20 @@ class ArticleController extends Controller
         return redirect('new')->with('status', 'Article created');
     }
 
-    public function edit()
+    public function edit(Article $article)
     {
-        return view('edit');
+        return view('edit', compact('article'));
+    }
+
+    public function update(ArticleFormRequest $request, Article $article)
+    {
+        $attr = $request->only('title', 'content');
+        $attr['image'] = $request->file('image')->store('images', 'public');
+
+        Storage::disk('public')->delete($article->image);
+
+        $article->update($attr);
+
+        return redirect('edit/' . $article->id)->with('status', 'Article updated');
     }
 }
