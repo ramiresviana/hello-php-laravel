@@ -21,7 +21,7 @@
 <a href="{{ url('article', $article->id) }}">
 <article class="mb-5 text-dark">
     <div class="media d-block d-md-flex">
-    <img src="{{ url($article->image) }}" class="mr-3"/>
+    <img src="{{ asset('storage/' . $article->image) }}" class="mr-3"/>
     <div class="media-body">
         <h4 class="my-3">{{ $article->title }}</h4>
         <p>{{ $article->content }}</p>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
-use Illuminate\Http\Request;
+use App\Http\Requests\ArticleFormRequest;
 
 class ArticleController extends Controller
 {
@@ -22,6 +22,16 @@ class ArticleController extends Controller
     public function create()
     {
         return view('create');
+    }
+
+    public function store(ArticleFormRequest $request)
+    {
+        $attr = $request->only('title', 'content');
+        $attr['image'] = $request->file('image')->store('images', 'public');
+
+        Article::create($attr);
+
+        return redirect('new')->with('status', 'Article created');
     }
 
     public function edit()
