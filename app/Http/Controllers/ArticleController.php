@@ -51,4 +51,17 @@ class ArticleController extends Controller
 
         return redirect('edit/' . $article->id)->with('status', 'Article updated');
     }
+
+    public function showRemove(Article $article)
+    {
+        return view('remove', compact('article'));
+    }
+
+    public function remove(Article $article)
+    {
+        Storage::disk('public')->delete($article->image);
+        $article->delete();
+
+        return redirect('/');
+    }
 }

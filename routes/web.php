@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/new', 'ArticleController@store');
     Route::get('/edit/{article}', 'ArticleController@edit');
     Route::post('/edit/{article}', 'ArticleController@update');
+    Route::get('/remove/{article}', 'ArticleController@showRemove');
+    Route::post('/remove/{article}', 'ArticleController@remove');
     Route::get('/logout', 'UserController@showlogout');
     Route::post('/logout', 'UserController@logout');
 });
