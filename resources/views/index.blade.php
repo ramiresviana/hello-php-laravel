@@ -6,15 +6,17 @@
 
 <h1 class="mt-5 pb-4">Hello Bootstrap</h1>
 
+@auth
 <div class="dropdown mb-2">
 <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Logged as admin</button>
 <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Add article</a>
-    <a class="dropdown-item" href="#">Logout</a>
+    <a class="dropdown-item" href="{{ url('new') }}">Add article</a>
+    <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
 </div>
 </div>
 
 <p class="pb-4">There are 100 posts</p>
+@endauth
 
 @foreach ($articles as $article)
 
