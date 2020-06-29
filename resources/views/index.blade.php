@@ -34,6 +34,6 @@
 
 @endforeach
 
-<button type="button" class="btn btn-primary mt-3">Next page</button>
+{{ $articles->links() }}
 
 @endsection
