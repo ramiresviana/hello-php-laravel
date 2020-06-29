@@ -1,7 +1,9 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
@@ -32,5 +34,13 @@ class DatabaseSeeder extends Seeder
         ];
 
         DB::table('articles')->insert($data);
+
+        $user = [
+            'name' => 'admin',
+            'email' => 'admin',
+            'password' => Hash::make('admin')
+        ];
+
+        User::create($user);
     }
 }

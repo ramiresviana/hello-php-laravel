@@ -15,7 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'ArticleController@index');
 Route::get('/article/{article}', 'ArticleController@show');
-Route::get('/new', 'ArticleController@create');
-Route::post('/new', 'ArticleController@store');
-Route::get('/edit/{article}', 'ArticleController@edit');
-Route::post('/edit/{article}', 'ArticleController@update');
+Route::get('/login', 'UserController@showLogin')->name('login');
+Route::post('/login', 'UserController@login');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/new', 'ArticleController@create');
+    Route::post('/new', 'ArticleController@store');
+    Route::get('/edit/{article}', 'ArticleController@edit');
+    Route::post('/edit/{article}', 'ArticleController@update');
+    Route::get('/logout', 'UserController@showlogout');
+    Route::post('/logout', 'UserController@logout');
+});
